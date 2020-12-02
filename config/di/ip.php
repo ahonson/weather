@@ -7,7 +7,7 @@ return [
         "ip" => [
             "shared" => true,
             "callback" => function () {
-                $ip = new \arte\Weather\IP\IP();
+                $ip = new \arte\IP\IP();
                 return $ip;
             }
         ],
