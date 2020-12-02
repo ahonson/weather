@@ -1,6 +1,6 @@
 <?php
 
-namespace arts19\IP;
+namespace arte\Weather\IP;
 
 /**
   * A class for geotagging IP addresses.
