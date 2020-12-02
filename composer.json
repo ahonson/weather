@@ -20,7 +20,7 @@
     "minimum-stability": "beta",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.4",
+        "php": ">=7.3",
         "anax/commons": "^2.0.14"
     },
     "require-dev": {
