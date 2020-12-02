@@ -1,6 +1,6 @@
 <?php
 
-namespace arte\Weather\IP;
+namespace arte\IP;
 
 /**
   * A class for validating IP addresses.

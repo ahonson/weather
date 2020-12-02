@@ -2,7 +2,7 @@
 
 namespace Anax\Controller;
 
-namespace arte\Weather\IP;
+namespace arte\IP;
 
 // use Anax\Commons\AppInjectableInterface;
 // use Anax\Commons\AppInjectableTrait;

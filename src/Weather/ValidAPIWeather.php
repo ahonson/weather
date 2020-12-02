@@ -1,6 +1,6 @@
 <?php
 
-namespace arte\Weather\Weather;
+namespace arte\Weather;
 
 /**
   * A class for validating weather parameters.
