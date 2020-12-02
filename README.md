@@ -11,8 +11,9 @@ This module has been created for the course *Webbaserade ramverk och designmöns
 
 ### Step 2: Integrate the module into your Anax base by copying the necessary files
 
-`# Go to the root of your Anax base repo
-rsync -av vendor/arte/weather/config ./`
+`# Go to the root of your Anax base repo and run these two commands`
+`rsync -av vendor/arte/weather/config ./`
+`rsync -av vendor/arte/weather/view ./`
 
 ### Step 3: Add your API-keys
 

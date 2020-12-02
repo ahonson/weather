@@ -71,7 +71,7 @@ class IPAPIController implements ContainerInjectableInterface
         $domainmsg = $userip->printDomainMessage();
 
         // this loads $ipkey and $weatherkey
-        include(__DIR__ . '/../../config/api/apikeys.php');
+        include(ANAX_INSTALL_PATH . '/../config/api/apikeys.php');
         $geoip = new IPGeotag($ipkey);
         $continent = $geoip->parseJson($ip, "continent_name");
         $country = $geoip->parseJson($ip, "country_name");
@@ -126,7 +126,7 @@ class IPAPIController implements ContainerInjectableInterface
         $domainmsg = $userip->printDomainMessage();
 
         // this loads $ipkey and $weatherkey
-        include(__DIR__ . '/../../config/api/apikeys.php');
+        include(ANAX_INSTALL_PATH . '/../config/api/apikeys.php');
         $geoip = new IPGeotag($ipkey);
         $continent = $geoip->parseJson($ip, "continent_name");
         $country = $geoip->parseJson($ip, "country_name");
