@@ -5,11 +5,11 @@ This module has been created for the course *Webbaserade ramverk och designmöns
 
 ## Usage
 
-### Step 1: install the module using composer.
+### Step 1: Install the module using composer.
 
 `composer require arte/weather`
 
-### Step 2: integrate the module into your Anax base by copying the necessary files
+### Step 2: Integrate the module into your Anax base by copying the necessary files
 
 `# Go to the root of your Anax base repo
 rsync -av vendor/arte/weather/config ./`
