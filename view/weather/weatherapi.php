@@ -164,10 +164,10 @@
 }</pre>
 
 <p><strong>Egna exempel</strong></p>
-<form class="" action="info" method="post">
+<form class="" action="weatherapi/info" method="post">
     <!-- <input size="40" type="text" name="ip" value="2012::456:567:23"><br><br> -->
     <label for="userip">Mata in en giltig IP/adress</label><br>
-    <input size="40" type="text" name="ip" value="<?= $ip ?>"><br><br>
+    <input size="40" type="text" name="userip" value="<?= $ip ?>"><br><br>
     <label for="longitud">Eller mata in geografiska koordinater: </label><br>
     <input size="20" type="text" name="longitud" value="" placeholder="Longitud">
     <input size="20" type="text" name="latitud" value="" placeholder="Latitud"><br>

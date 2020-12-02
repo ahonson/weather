@@ -89,6 +89,12 @@ class WeatherController implements ContainerInjectableInterface
             $long = $geoinfo["longitude"];
             $geoinfo = $geotag->checkinputip($input);
         }
+        if (!($lat && $long)) {
+            $msg = "<p class='warning'>No geodata could be detected.</p>";
+            $session->set("warning", $msg);
+            return $response->redirect("weather");
+        }
+
         $map = $geotag->printmap($lat, $long);
         $openweather = new OpenWeather($weatherkey, $lat, $long);
         $weatherinfo = $openweather->currentweather();

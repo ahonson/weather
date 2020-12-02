@@ -81,6 +81,12 @@ class WeatherAPIController implements ContainerInjectableInterface
             $lat = $geoinfo["latitude"];
             $lon = $geoinfo["longitude"];
         }
+        if (!($lat && $lon)) {
+            $msg = [
+                "msg" => "No geodata could be detected."
+            ];
+            return [json_encode($msg, JSON_UNESCAPED_UNICODE)];
+        }
 
         $type  = $request->getGet("type", "");
         $openweather = new OpenWeather($weatherkey, $lat, $lon);
@@ -126,6 +132,12 @@ class WeatherAPIController implements ContainerInjectableInterface
             $geoinfo = $geotag->checkdefaultip($userip);
             $lat = $geoinfo["latitude"];
             $lon = $geoinfo["longitude"];
+        }
+        if (!($lat && $lon)) {
+            $msg = [
+                "msg" => "No geodata could be detected."
+            ];
+            return [json_encode($msg, JSON_UNESCAPED_UNICODE)];
         }
 
         $type  = $request->getPost("type", "");
