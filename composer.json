@@ -16,16 +16,5 @@
         "psr-4": {
             "Anax\\": "src/"
         }
-    },
-    "minimum-stability": "beta",
-    "prefer-stable": true,
-    "require": {
-        "php": ">=7.3",
-        "anax/commons": "^2.0.14"
-    },
-    "require-dev": {
-        "phpmetrics/phpmetrics": "^2",
-        "phpunit/phpunit": "^7",
-        "anax/anax": "^2.0.17"
     }
 }
