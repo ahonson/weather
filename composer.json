@@ -1,0 +1,31 @@
+{
+    "name": "arte/weather",
+    "type": "library",
+    "description": "Anax Weather module.",
+    "keywords": ["IPstack", "OpenWeatherMap", "validation", "geolocation", "module"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aron Tesi",
+            "email": "arts19@student.bth.se",
+            "homepage": "https://github.com/ahonson",
+            "role": "Student / Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Anax\\": "src/"
+        }
+    },
+    "minimum-stability": "beta",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.4",
+        "anax/commons": "^2.0.14"
+    },
+    "require-dev": {
+        "phpmetrics/phpmetrics": "^2",
+        "phpunit/phpunit": "^7",
+        "anax/anax": "^2.0.17"
+    }
+}
