@@ -76,7 +76,7 @@ class WeatherController implements ContainerInjectableInterface
         }
 
         // this loads $ipkey and $weatherkey
-        include(ANAX_INSTALL_PATH . '/../config/api/apikeys.php');
+        include(ANAX_INSTALL_PATH . '/config/api/apikeys.php');
         $page = $this->di->get("page");
         $lat = $request->getPost("latitud");
         $long = $request->getPost("longitud");

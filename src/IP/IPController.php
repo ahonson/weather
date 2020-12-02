@@ -50,7 +50,7 @@ class IPController implements ContainerInjectableInterface
     public function indexActionGet() : object
     {
         // this loads $ipkey and $weatherkey
-        include(ANAX_INSTALL_PATH . '/../config/api/apikeys.php');
+        include(ANAX_INSTALL_PATH . '/config/api/apikeys.php');
         $page = $this->di->get("page");
         $session = $this->di->get("session");
         $realip = new RealIP();
