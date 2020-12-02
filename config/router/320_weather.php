@@ -7,7 +7,7 @@ return [
         [
             "info" => "Weather service",
             "mount" => "weather",
-            "handler" => "\arte\Weather\Weather\WeatherController",
+            "handler" => "\arte\Weather\WeatherController",
         ],
     ]
 ];

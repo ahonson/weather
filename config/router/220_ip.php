@@ -7,7 +7,7 @@ return [
         [
             "info" => "IP4-IP6",
             "mount" => "ip",
-            "handler" => "\arte\Weather\IP\IPController",
+            "handler" => "\arte\IP\IPController",
         ],
     ]
 ];
