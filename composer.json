@@ -14,7 +14,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Anax\\": "src/"
+            "Anax\\": "src/",
+            "arte\\": "src/"
         }
     },
     "minimum-stability": "beta",
