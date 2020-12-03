@@ -7,7 +7,7 @@ return [
         [
             "info" => "Väder - API",
             "mount" => "weatherapi",
-            "handler" => "\arte\Weather\WeatherAPIController",
+            "handler" => "\artes\Weather\WeatherAPIController",
         ],
     ]
 ];

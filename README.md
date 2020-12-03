@@ -7,15 +7,15 @@ This module has been created for the course *Webbaserade ramverk och designmöns
 
 ### Step 1: Install the module using composer.
 
-`composer require arte/weather`
+`composer require artes/weather`
 
 ### Step 2: Integrate the module into your Anax base by copying the necessary files
 
 `# Go to the root of your Anax base repo and run these two commands`
 
-`rsync -av vendor/arte/weather/config ./`
+`rsync -av vendor/artes/weather/config ./`
 
-`rsync -av vendor/arte/weather/view ./`
+`rsync -av vendor/artes/weather/view ./`
 
 ### Step 3: Add your API-keys
 

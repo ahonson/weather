@@ -1,6 +1,6 @@
 <?php
 
-namespace arte\Weather;
+namespace artes\Weather;
 
 /**
   * A class for OpenWeatherMap.

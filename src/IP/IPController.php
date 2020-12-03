@@ -2,7 +2,7 @@
 
 namespace Anax\Controller;
 
-namespace arte\IP;
+namespace artes\IP;
 
 // use Anax\Commons\AppInjectableInterface;
 // use Anax\Commons\AppInjectableTrait;

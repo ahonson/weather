@@ -1,5 +1,5 @@
 {
-    "name": "arte/weather",
+    "name": "artes/weather",
     "type": "library",
     "description": "Anax Weather module.",
     "keywords": ["IPstack", "OpenWeatherMap", "validation", "geolocation", "module"],
@@ -15,7 +15,7 @@
     "autoload": {
         "psr-4": {
             "Anax\\": "src/",
-            "arte\\": "src/"
+            "artes\\": "src/"
         }
     },
     "minimum-stability": "beta",

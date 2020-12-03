@@ -2,15 +2,15 @@
 
 namespace Anax\Controller;
 
-namespace arte\Weather;
+namespace artes\Weather;
 
 // use Anax\Commons\AppInjectableInterface;
 // use Anax\Commons\AppInjectableTrait;
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 use Anax\Route\Exception\NotFoundException;
-use arte\IP\IPGeotag;
-use arte\IP\RealIP;
+use artes\IP\IPGeotag;
+use artes\IP\RealIP;
 
 /**
  * A sample controller to show how a controller class can be implemented.

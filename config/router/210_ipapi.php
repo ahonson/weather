@@ -7,7 +7,7 @@ return [
         [
             "info" => "IP4 - IP6",
             "mount" => "ipapi",
-            "handler" => "\arte\IP\IPAPIController",
+            "handler" => "\artes\IP\IPAPIController",
         ],
     ]
 ];

@@ -1,6 +1,6 @@
 <?php
 
-namespace arte\IP;
+namespace artes\IP;
 
 /**
   * A class for getting real IP addresses.

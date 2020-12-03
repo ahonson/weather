@@ -7,7 +7,7 @@ return [
         "ip" => [
             "shared" => true,
             "callback" => function () {
-                $ip = new \arte\IP\IP();
+                $ip = new \artes\IP\IP();
                 return $ip;
             }
         ],
