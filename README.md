@@ -21,7 +21,7 @@ This module has been created for the course *Webbaserade ramverk och designmöns
 
 The module makes use of [ipstack](https://ipstack.com/) and [openweathermap](https://openweathermap.org/) to provide the user with information about a given IP-address or about a valid pair of geographical coordinates.
 
-Create an account on both sites and save your API-keys in `config/api/apikeys.php` according to the instructions in the comments.
+Create an account on both sites and save your API-keys in `config/api/apikeys.php` according to the instructions in the comments. If you miss this step certain classes may not work as expected.
 
 ### Step 4: Protect your API-keys
 
