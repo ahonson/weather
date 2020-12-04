@@ -25,6 +25,7 @@
         "anax/commons": "^2.0.14"
     },
     "require-dev": {
+        "anax/anax-ramverk1-me": "^1.0.0",
         "phpmetrics/phpmetrics": "^2",
         "phpunit/phpunit": "^7",
         "anax/anax": "^2.0.17"

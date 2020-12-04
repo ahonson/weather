@@ -28,3 +28,21 @@ Create an account on both sites and save your API-keys in `config/api/apikeys.ph
 Update your `.gitignore` with the following line in your Anax base.
 
 `/config/api`
+
+#### Step 5: Update your navbar
+
+Add *IP* and *Weather* to your navbar via `config/navbar/header.php` and via `config/navbar/responsive.php`
+
+You will need to insert the following lines of code into the `items`-key in the above files.
+
+```[
+    "text" => "IP",
+    "url" => "ip/init",
+    "title" => "IP validator",
+],
+[
+    "text" => "Väder",
+    "url" => "weather",
+    "title" => "Väder API",
+],
+```
