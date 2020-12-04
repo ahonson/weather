@@ -93,7 +93,7 @@ class IPGeotag
         return $msg;
     }
 
-    private function printGeoDetails($myjson) : string
+    public function printGeoDetails($myjson) : string
     {
         $msg = "<h3>Ytterligare information från Ipstacks API</h3>";
         $msg = $msg . "<p><strong>Continent</strong>: " . $myjson["continent_name"] . "</p>";

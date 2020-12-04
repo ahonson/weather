@@ -62,7 +62,36 @@ class IPGeotagTest extends TestCase
     {
         $ipkey = "78956734565756767868";
         $geoip = new IPGeotagMock($ipkey);
-        $res = $geoip->checkinputip("694.21.49.200");
+        $res = $geoip->checkinputip("");
+        $this->assertIsString($res);
+    }
+
+    /**
+     * IPGeotag
+     */
+    public function testPrintGeoDetails()
+    {
+        $ipkey = "78956734565756767868";
+        $geoip = new IPGeotagMock($ipkey);
+        $myjson = [
+            "continent_name" => "Europe",
+            "country_name" => "France",
+            "country_code" => "1234",
+            "city" => "Paris",
+            "zip" => "12345",
+            "latitude" => "20",
+            "longitude" => "45",
+            "location" => [
+                "country_flag" => "xy",
+                "calling_code" => "26",
+                "languages" => [
+                    [
+                        "name" => "French"
+                    ]
+                ]
+            ]
+        ];
+        $res = $geoip->printGeoDetails($myjson);
         $this->assertIsString($res);
     }
 }

@@ -39,8 +39,8 @@ class ValidWeatherTest extends TestCase
         $ip = $this->di->get("ip");
         $request = $this->di->get("request");
         $request->setPost("ipadress", "yes");
-        $vw = new ValidWeather($request, $ip);
-        $res = $vw->errormsg();
+        $validweather = new ValidWeather($request, $ip);
+        $res = $validweather->errormsg();
         $this->assertIsString($res);
     }
 
@@ -51,8 +51,8 @@ class ValidWeatherTest extends TestCase
         $request->setPost("koordinater", "yes");
         $request->setPost("latitud", "25");
         $request->setPost("longitud", "47");
-        $vw = new ValidWeather($request, $ip);
-        $res = $vw->errormsg();
+        $validweather = new ValidWeather($request, $ip);
+        $res = $validweather->errormsg();
         $this->assertIsString($res);
     }
 
@@ -62,8 +62,8 @@ class ValidWeatherTest extends TestCase
         $request = $this->di->get("request");
         $request->setPost("ipadress", "yes");
         $request->setPost("userip", "456.56.56.5");
-        $vw = new ValidWeather($request, $ip);
-        $res = $vw->errormsg();
+        $validweather = new ValidWeather($request, $ip);
+        $res = $validweather->errormsg();
         $this->assertIsString($res);
     }
 
@@ -74,8 +74,20 @@ class ValidWeatherTest extends TestCase
         $request->setPost("koordinater", "yes");
         $request->setPost("latitud", "225");
         $request->setPost("longitud", "547");
-        $vw = new ValidWeather($request, $ip);
-        $res = $vw->errormsg();
+        $validweather = new ValidWeather($request, $ip);
+        $res = $validweather->errormsg();
+        $this->assertIsString($res);
+    }
+
+    public function testErrormsg4()
+    {
+        $ip = $this->di->get("ip");
+        $request = $this->di->get("request");
+        $request->setPost("koordinater", "yes");
+        $request->setPost("latitud", "");
+        $request->setPost("longitud", "547");
+        $validweather = new ValidWeather($request, $ip);
+        $res = $validweather->errormsg();
         $this->assertIsString($res);
     }
 }

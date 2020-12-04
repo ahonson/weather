@@ -60,38 +60,26 @@ class ValidAPIWeatherTest extends TestCase
         $this->assertIsString($res);
     }
 
-    // public function testErrormsg1()
-    // {
-    //     $ip = $this->di->get("ip");
-    //     $request = $this->di->get("request");
-    //     $request->setPost("koordinater", "yes");
-    //     $request->setPost("latitud", "25");
-    //     $request->setPost("longitud", "47");
-    //     $vw = new ValidAPIWeather($request, $ip);
-    //     $res = $vw->errormsg();
-    //     $this->assertIsString($res);
-    // }
-    //
-    // public function testErrormsg2()
-    // {
-    //     $ip = $this->di->get("ip");
-    //     $request = $this->di->get("request");
-    //     $request->setPost("ipadress", "yes");
-    //     $request->setPost("userip", "456.56.56.5");
-    //     $vw = new ValidAPIWeather($request, $ip);
-    //     $res = $vw->errormsg();
-    //     $this->assertIsString($res);
-    // }
-    //
-    // public function testErrormsg3()
-    // {
-    //     $ip = $this->di->get("ip");
-    //     $request = $this->di->get("request");
-    //     $request->setPost("koordinater", "yes");
-    //     $request->setPost("latitud", "225");
-    //     $request->setPost("longitud", "547");
-    //     $vw = new ValidAPIWeather($request, $ip);
-    //     $res = $vw->errormsg();
-    //     $this->assertIsString($res);
-    // }
+    public function testErrormsg2()
+    {
+        $ip = $this->di->get("ip");
+        $request = $this->di->get("request");
+        $request->setGet("ipadress", "yes");
+        $request->setGet("userip", "456.56.56.5");
+        $vw = new ValidAPIWeather($request, $ip);
+        $res = $vw->errormsg();
+        $this->assertIsString($res);
+    }
+
+    public function testErrormsg3()
+    {
+        $ip = $this->di->get("ip");
+        $request = $this->di->get("request");
+        $request->setServer("REQUEST_METHOD", "GET");
+        $request->setGet("ipadress", "yes");
+        $request->setGet("userip", "456.56.56.5");
+        $vw = new ValidAPIWeather($request, $ip);
+        $res = $vw->errormsg();
+        $this->assertIsString($res);
+    }
 }
