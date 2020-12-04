@@ -42,15 +42,20 @@ class IPGeotag
         $apiresponse = curl_exec($ch);
 
         $jsonresp = json_decode($apiresponse, JSON_UNESCAPED_UNICODE);
+        if (!$jsonresp) {
+            $jsonresp = ["ip" => ""];
+        }
         return $jsonresp;
     }
 
     public function getmap($input) : string
     {
         $myjson = $this->checkdefaultip($input);
-        if ($myjson["latitude"]) {
-            $map = "https://www.openstreetmap.org/?mlat=" . $myjson["latitude"] . "&mlon=" . $myjson["longitude"] . "#map=10/" . $myjson["latitude"] . "/" . $myjson["longitude"];
-            return $map;
+        if (isset($myjson["latitude"])) {
+            if ($myjson["latitude"]) {
+                $map = "https://www.openstreetmap.org/?mlat=" . $myjson["latitude"] . "&mlon=" . $myjson["longitude"] . "#map=10/" . $myjson["latitude"] . "/" . $myjson["longitude"];
+                return $map;
+            }
         }
         return "";
     }
@@ -77,10 +82,11 @@ class IPGeotag
             $apiresponse = curl_exec($ch);
 
             $jsonresp = json_decode($apiresponse, JSON_UNESCAPED_UNICODE);
-            if ($jsonresp["type"] === "ipv4" || $jsonresp["type"] === "ipv6") {
-                return $this->printGeoDetails($jsonresp);
+            if (isset($jsonresp["type"])) {
+                if ($jsonresp["type"] === "ipv4" || $jsonresp["type"] === "ipv6") {
+                    return $this->printGeoDetails($jsonresp);
+                }
             }
-            return "";
         }
         return "";
     }

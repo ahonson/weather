@@ -38,7 +38,7 @@ class IPControllerTest extends TestCase
     public function testIndexActionGet()
     {
         // Setup the controller
-        $controller = new IPControllerMock();
+        $controller = new IPController();
         $controller->setDI($this->di);
 
         // Test the controller action

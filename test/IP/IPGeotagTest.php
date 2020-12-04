@@ -17,7 +17,7 @@ class IPGeotagTest extends TestCase
     {
         $ipkey = "78956734565756767868";
         $geoip = new IPGeotagMock($ipkey);
-        $res = $geoip->getmap("567");
+        $res = $geoip->getmap("8.8.8.8");
         $this->assertIsString($res);
     }
 
@@ -52,7 +52,13 @@ class IPGeotagTest extends TestCase
         $ipkey = "78956734565756767868";
         $geoip = new IPGeotagMock($ipkey);
         $res = $geoip->parseJson("94.21.49.200", "location", "capital");
+        $geoip1 = new IPGeotagMock($ipkey);
+        $res1 = $geoip1->parseJson("94.21.49.200", "location", "capital", "name");
+        $geoip2 = new IPGeotagMock($ipkey);
+        $res2 = $geoip2->parseJson("94.21.49.200", "location");
         $this->assertIsString($res);
+        $this->assertIsString($res1);
+        $this->assertIsString($res2);
     }
 
     /**
@@ -63,7 +69,10 @@ class IPGeotagTest extends TestCase
         $ipkey = "78956734565756767868";
         $geoip = new IPGeotagMock($ipkey);
         $res = $geoip->checkinputip("");
+        $geoip1 = new IPGeotagMock($ipkey);
+        $res1 = $geoip1->checkinputip("8.8.8.8");
         $this->assertIsString($res);
+        $this->assertIsString($res1);
     }
 
     /**

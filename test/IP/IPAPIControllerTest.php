@@ -53,7 +53,7 @@ class IPAPIControllerTest extends TestCase
     public function testCheckActionGet()
     {
         // Setup the controller
-        $controller = new IPAPIControllerMock();
+        $controller = new IPAPIController();
         $controller->setDI($this->di);
 
         // Test the controller action
@@ -69,7 +69,7 @@ class IPAPIControllerTest extends TestCase
     public function testCheckActionPost()
     {
         // Setup the controller
-        $controller = new IPAPIControllerMock();
+        $controller = new IPAPIController();
         $controller->setDI($this->di);
 
         // Test the controller action
