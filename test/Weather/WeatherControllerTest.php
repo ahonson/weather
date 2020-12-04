@@ -52,7 +52,7 @@ class WeatherControllerTest extends TestCase
     public function testIndexActionPost()
     {
         // Setup the controller
-        $controller = new WeatherControllerMock();
+        $controller = new WeatherController();
         $controller->setDI($this->di);
 
         // Test the controller action

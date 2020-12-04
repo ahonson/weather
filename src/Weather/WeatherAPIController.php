@@ -78,8 +78,8 @@ class WeatherAPIController implements ContainerInjectableInterface
         $geotag = new IPGeotag($ipkey);
         if ($userip) {
             $geoinfo = $geotag->checkdefaultip($userip);
-            $lat = $geoinfo["latitude"];
-            $lon = $geoinfo["longitude"];
+            $lat = $geoinfo["latitude"] ?? "";
+            $lon = $geoinfo["longitude"] ?? "";
         }
         if (!($lat && $lon)) {
             $msg = [
@@ -130,8 +130,8 @@ class WeatherAPIController implements ContainerInjectableInterface
         $geotag = new IPGeotag($ipkey);
         if ($userip) {
             $geoinfo = $geotag->checkdefaultip($userip);
-            $lat = $geoinfo["latitude"];
-            $lon = $geoinfo["longitude"];
+            $lat = $geoinfo["latitude"] ?? "";
+            $lon = $geoinfo["longitude"] ?? "";
         }
         if (!($lat && $lon)) {
             $msg = [

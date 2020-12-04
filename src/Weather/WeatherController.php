@@ -85,8 +85,8 @@ class WeatherController implements ContainerInjectableInterface
         if ($request->getPost("userip")) {
             $input = $request->getPost("userip");
             $geoinfo = $geotag->checkdefaultip($input);
-            $lat = $geoinfo["latitude"];
-            $long = $geoinfo["longitude"];
+            $lat = $geoinfo["latitude"] ?? "";
+            $long = $geoinfo["longitude"] ?? "";
             $geoinfo = $geotag->checkinputip($input);
         }
         if (!($lat && $long)) {

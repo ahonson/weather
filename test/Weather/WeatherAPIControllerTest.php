@@ -52,7 +52,7 @@ class WeatherAPIControllerTest extends TestCase
     public function testInfoActionGet()
     {
         // Setup the controller
-        $controller = new WeatherAPIControllerMock();
+        $controller = new WeatherAPIController();
         $controller->setDI($this->di);
 
         // Test the controller action
@@ -78,7 +78,7 @@ class WeatherAPIControllerTest extends TestCase
     public function testInfoActionPost()
     {
         // Setup the controller
-        $controller = new WeatherAPIControllerMock();
+        $controller = new WeatherAPIController();
         $controller->setDI($this->di);
 
         // Test the controller action
