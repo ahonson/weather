@@ -17,6 +17,10 @@ This module has been created for the course *Webbaserade ramverk och designmöns
 
 `rsync -av vendor/artes/weather/view ./`
 
+Run this command if you want to execute the unit tests of the module with `make test` from the root of you Anax base.
+
+`rsync -av vendor/artes/weather/test ./`
+
 ### Step 3: Add your API-keys
 
 The module makes use of [ipstack](https://ipstack.com/) and [openweathermap](https://openweathermap.org/) to provide the user with information about a given IP-address or about a valid pair of geographical coordinates.
