@@ -29,7 +29,7 @@ Update your `.gitignore` with the following line in your Anax base.
 
 `/config/api`
 
-#### Step 5: Update your navbar
+### Step 5: Update your navbar
 
 Add *IP* and *Weather* to your navbar via `config/navbar/header.php` and via `config/navbar/responsive.php`
 

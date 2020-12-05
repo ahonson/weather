@@ -80,6 +80,7 @@ class WeatherController implements ContainerInjectableInterface
         $page = $this->di->get("page");
         $lat = $request->getPost("latitud");
         $long = $request->getPost("longitud");
+        $type = $request->getPost("infotyp");
         $geotag = new IPGeotag($ipkey);
         $geoinfo = "";
         if ($request->getPost("userip")) {
@@ -89,37 +90,49 @@ class WeatherController implements ContainerInjectableInterface
             $long = $geoinfo["longitude"] ?? "";
             $geoinfo = $geotag->checkinputip($input);
         }
+        $map = $geotag->printmap($lat, $long);
+        $data = $this->getWeather($weatherkey, $lat, $long, $type);
+        $data["map"] = $map;
+        $data["geoinfo"] = $geoinfo;
+        $page->add(
+            "weather/info",
+            $data
+        );
+
         if (!($lat && $long)) {
             $msg = "<p class='warning'>No geodata could be detected.</p>";
             $session->set("warning", $msg);
             return $response->redirect("weather");
         }
+        return $page->render([
+            "title" => "Weather",
+        ]);
+    }
 
-        $map = $geotag->printmap($lat, $long);
+    /**
+     * This is the index method action, it handles:
+     * ANY METHOD mountpoint
+     * ANY METHOD mountpoint/
+     * ANY METHOD mountpoint/index
+     *
+     * @return array
+     */
+    public function getWeather($weatherkey, $lat, $long, $type) : array
+    {
         $openweather = new OpenWeather($weatherkey, $lat, $long);
         $weatherinfo = $openweather->currentweather();
-        if ($request->getPost("infotyp") === "historik") {
+        if ($type === "historik") {
             $historic = $openweather->historicweather();
             $forecast = "";
         } else {
             $forecast = $openweather->forecast();
             $historic = "";
         }
-
         $data = [
             "weatherinfo" => $weatherinfo,
-            "map" => $map,
-            "geoinfo" => $geoinfo,
             "forecast" => $forecast,
             "historic" => $historic
         ];
-
-        $page->add(
-            "weather/info",
-            $data
-        );
-        return $page->render([
-            "title" => "Weather",
-        ]);
+        return $data;
     }
 }

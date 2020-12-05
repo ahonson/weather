@@ -69,4 +69,16 @@ class WeatherControllerTest extends TestCase
         $this->assertInstanceOf(ResponseUtility::class, $res1);
         $this->assertInstanceOf(ResponseUtility::class, $res2);
     }
+
+    public function testGetWeather()
+    {
+        // Setup the controller
+        $controller = new WeatherController();
+        $controller->setDI($this->di);
+        // Test the controller action
+        $res = $controller->getWeather("345", "20", "45", "historik");
+        $res1 = $controller->getWeather("345", "20", "45", "");
+        $this->assertIsArray($res);
+        $this->assertIsArray($res1);
+    }
 }

@@ -97,4 +97,18 @@ class WeatherAPIControllerTest extends TestCase
         $this->assertIsArray($res2);
         $this->assertIsArray($res3);
     }
+
+    public function testGetWeather()
+    {
+        // Setup the controller
+        $controller = new WeatherAPIController();
+        $controller->setDI($this->di);
+        // Test the controller action
+        $res = $controller->getWeather("345", "20", "45", "historical");
+        $res1 = $controller->getWeather("345", "20", "45", "forecast");
+        $res2 = $controller->getWeather("345", "20", "45", "");
+        $this->assertIsArray($res);
+        $this->assertIsArray($res1);
+        $this->assertIsArray($res2);
+    }
 }

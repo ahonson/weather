@@ -66,6 +66,7 @@ class WeatherAPIController implements ContainerInjectableInterface
         $userip  = $request->getGet("ip", "");
         $lon  = $request->getGet("lon", "");
         $lat  = $request->getGet("lat", "");
+        $type  = $request->getGet("type", "");
         $validator = new ValidAPIWeather($request, $ip);
         if ($validator->errormsg()) {
             $myjson = [
@@ -81,25 +82,15 @@ class WeatherAPIController implements ContainerInjectableInterface
             $lat = $geoinfo["latitude"] ?? "";
             $lon = $geoinfo["longitude"] ?? "";
         }
+        $data = $this->getWeather($weatherkey, $lat, $lon, $type);
         if (!($lat && $lon)) {
             $msg = [
                 "msg" => "No geodata could be detected."
             ];
             return [json_encode($msg, JSON_UNESCAPED_UNICODE)];
         }
-
-        $type  = $request->getGet("type", "");
-        $openweather = new OpenWeather($weatherkey, $lat, $lon);
-        if ($type === "historical") {
-            $data = $openweather->historicweather();
-        } elseif ($type === "forecast") {
-            $data = $openweather->forecast();
-        } else {
-            $data = $openweather->currentweather();
-        }
         return [json_encode($data, JSON_UNESCAPED_UNICODE)];
     }
-
 
     /**
      * This is the index method action, it handles:
@@ -116,6 +107,7 @@ class WeatherAPIController implements ContainerInjectableInterface
         $userip  = $request->getPost("userip", "");
         $lon  = $request->getPost("longitud", "");
         $lat  = $request->getPost("latitud", "");
+        $type  = $request->getPost("type", "");
 
         $validator = new ValidAPIWeather($request, $ip);
         if ($validator->errormsg()) {
@@ -133,14 +125,26 @@ class WeatherAPIController implements ContainerInjectableInterface
             $lat = $geoinfo["latitude"] ?? "";
             $lon = $geoinfo["longitude"] ?? "";
         }
+        $data = $this->getWeather($weatherkey, $lat, $lon, $type);
         if (!($lat && $lon)) {
             $msg = [
                 "msg" => "No geodata could be detected."
             ];
             return [json_encode($msg, JSON_UNESCAPED_UNICODE)];
         }
+        return [json_encode($data, JSON_UNESCAPED_UNICODE)];
+    }
 
-        $type  = $request->getPost("type", "");
+    /**
+     * This is the index method action, it handles:
+     * ANY METHOD mountpoint
+     * ANY METHOD mountpoint/
+     * ANY METHOD mountpoint/index
+     *
+     * @return array
+     */
+    public function getWeather($weatherkey, $lat, $lon, $type) : array
+    {
         $openweather = new OpenWeather($weatherkey, $lat, $lon);
         if ($type === "historical") {
             $data = $openweather->historicweather();
@@ -149,6 +153,6 @@ class WeatherAPIController implements ContainerInjectableInterface
         } else {
             $data = $openweather->currentweather();
         }
-        return [json_encode($data, JSON_UNESCAPED_UNICODE)];
+        return $data;
     }
 }

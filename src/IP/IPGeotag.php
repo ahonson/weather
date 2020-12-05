@@ -93,6 +93,9 @@ class IPGeotag
 
     public function printmap($lat, $lon) : string
     {
+        if (!is_numeric($lat) || !is_numeric($lon)) {
+            return "";
+        }
         $msg = '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox='. ($lon - 1) . '%2C' . ($lat - 1) . '%2C' . ($lon + 1) . '%2C' . ($lat + 1);
         $msg = $msg . '&amp;layer=mapnik&amp;marker=' . $lat . "%2C" . $lon . '" style="border: 1px solid black"></iframe><br/>';
         $msg = $msg . "<p>Click here for a <a href='https://www.openstreetmap.org/?mlat=" . $lat . "&mlon=" . $lon . "#map=10/" . $lat . "/" . $lon . "' target='_blank'> larger map</a>.</p>";
