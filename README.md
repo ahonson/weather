@@ -35,7 +35,8 @@ Add *IP* and *Weather* to your navbar via `config/navbar/header.php` and via `co
 
 You will need to insert the following lines of code into the `items`-key in the above files.
 
-```[
+```
+[
     "text" => "IP",
     "url" => "ip/init",
     "title" => "IP validator",
