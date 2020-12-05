@@ -17,7 +17,9 @@ This module has been created for the course *Webbaserade ramverk och designmöns
 
 `rsync -av vendor/artes/weather/view ./`
 
-Run this command if you want to execute the unit tests of the module with `make test` from the root of you Anax base.
+Run even these commands if you want to execute the unit tests of the module with `make test` from the root of you Anax base.
+
+`rsync -av vendor/artes/weather/src ./`
 
 `rsync -av vendor/artes/weather/test ./`
 
