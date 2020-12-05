@@ -2,7 +2,6 @@
 
 namespace artes\IP;
 
-
 /**
  * Class for mocking IPController
  * @SuppressWarnings(PHPMD)

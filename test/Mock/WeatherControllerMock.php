@@ -2,7 +2,6 @@
 
 namespace artes\Weather;
 
-
 /**
  * Class for mocking IPController
  * @SuppressWarnings(PHPMD)
