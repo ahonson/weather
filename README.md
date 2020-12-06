@@ -1,5 +1,6 @@
 [![Latest Stable Version](https://poser.pugx.org/artes/weather/v/stable)](https://packagist.org/packages/artes/weather)
 [![Build Status](https://travis-ci.com/ahonson/weather.svg?branch=main)](https://travis-ci.com/ahonson/weather)
+[![Gitter](https://badges.gitter.im/ahonson/weather.svg)](https://gitter.im/ahonson/weather?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ahonson/weather/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/ahonson/weather/?branch=main)
 [![Code Coverage](https://scrutinizer-ci.com/g/ahonson/weather/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/ahonson/weather/?branch=main)
