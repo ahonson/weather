@@ -1,4 +1,4 @@
-[![Latest Stable Version](https://packagist.org/packages/artes/weather)](https://poser.pugx.org/artes/weather/v/stable)
+[![Latest Stable Version](https://poser.pugx.org/artes/weather/v/stable)](https://packagist.org/packages/artes/weather)
 [![Build Status](https://travis-ci.com/ahonson/weather.svg?branch=main)](https://travis-ci.com/ahonson/weather)
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ahonson/weather/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/ahonson/weather/?branch=main)
