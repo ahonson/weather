@@ -72,13 +72,19 @@ class OpenWeather
     // multiple curls parallelly
     public function historicweather() : array
     {
-        $result = [];
         $days = $this->generateTimestamps();
         $urls = [];
         $mycount = count($days);
         for ($i = 0; $i < $mycount; $i++) {
             $urls[] = "https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=" . $this->lat . "&lon=" . $this->long .  "&dt=" . $days[$i]. "&appid=" . $this->weatherkey . "&units=metric&lang=se";
         }
+        $result = $this->mymulticurl($urls);
+        return $result;
+    }
+
+    private function mymulticurl($urls)
+    {
+        $result = [];
         $multi = curl_multi_init();
         $handles = [];
         foreach ($urls as $url) {
