@@ -4,7 +4,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ahonson/weather/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/ahonson/weather/?branch=main)
 [![Code Coverage](https://scrutinizer-ci.com/g/ahonson/weather/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/ahonson/weather/?branch=main)
 [![Build Status](https://scrutinizer-ci.com/g/ahonson/weather/badges/build.png?b=main)](https://scrutinizer-ci.com/g/ahonson/weather/build-status/main)
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/ahonson/weather/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/ahonson/weather/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence) [![Join the chat at https://gitter.im/ahonson/weather](https://badges.gitter.im/ahonson/weather.svg)](https://gitter.im/ahonson/weather?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Anax module for weather services and IP validation
 ==================================================
