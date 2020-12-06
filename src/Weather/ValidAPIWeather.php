@@ -9,13 +9,17 @@ namespace artes\Weather;
   */
 class ValidAPIWeather
 {
+    private $latitud;
+    private $longitud;
+    private $userip;
+    private $ip;
+
     /**
      * Constructor to initiate an ValidWeather object,
      *
      * @param string $userinput
      *
      */
-
     public function __construct(object $userinput, object $ip)
     {
         if ($userinput->getMethod() === "GET") {

@@ -9,13 +9,16 @@ namespace artes\Weather;
   */
 class OpenWeather
 {
+    private $weatherkey;
+    private $lat;
+    private $long;
+
     /**
      * Constructor to initiate an OpenWeather object,
      *
      * @param string $userinput
      *
      */
-
     public function __construct(string $weatherkey, string $lat, string $long)
     {
         $this->weatherkey = $weatherkey;
@@ -72,7 +75,8 @@ class OpenWeather
         $result = [];
         $days = $this->generateTimestamps();
         $urls = [];
-        for ($i = 0; $i < count($days); $i++) {
+        $mycount = count($days);
+        for ($i = 0; $i < $mycount; $i++) {
             $urls[] = "https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=" . $this->lat . "&lon=" . $this->long .  "&dt=" . $days[$i]. "&appid=" . $this->weatherkey . "&units=metric&lang=se";
         }
         $multi = curl_multi_init();

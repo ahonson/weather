@@ -9,13 +9,19 @@ namespace artes\Weather;
   */
 class ValidWeather
 {
+    private $latitud;
+    private $longitud;
+    private $userip;
+    private $ipadress;
+    private $koordinater;
+    private $ip;
+
     /**
      * Constructor to initiate an ValidWeather object,
      *
      * @param string $userinput
      *
      */
-
     public function __construct(object $userinput, object $ip)
     {
         $this->latitud = $userinput->getPost("latitud");
