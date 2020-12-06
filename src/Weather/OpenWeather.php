@@ -31,7 +31,7 @@ class OpenWeather
         $ch = curl_init();
         $url = "https://api.openweathermap.org/data/2.5/weather?lat=" . $this->lat . "&lon=" . $this->long . "&appid=" . $this->weatherkey . "&units=metric&lang=se";
         curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_RETURNTRANSFER, 1);
         $apiresponse = curl_exec(/** @scrutinizer ignore-type */ $ch);
 
         $jsonresp = json_decode($apiresponse, /** @scrutinizer ignore-type */ JSON_UNESCAPED_UNICODE);
@@ -43,7 +43,7 @@ class OpenWeather
         $ch = curl_init();
         $url = "https://api.openweathermap.org/data/2.5/onecall?lat=" . $this->lat . "&lon=" . $this->long . "&exclude=minutely,hourly&appid=" . $this->weatherkey . "&units=metric&lang=se";
         curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_RETURNTRANSFER, 1);
         $apiresponse = curl_exec(/** @scrutinizer ignore-type */ $ch);
 
         $jsonresp = json_decode($apiresponse, /** @scrutinizer ignore-type */ JSON_UNESCAPED_UNICODE);
@@ -84,7 +84,7 @@ class OpenWeather
         foreach ($urls as $url) {
             $ch = curl_init($url);
             curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_HEADER, false);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_RETURNTRANSFER, true);
             curl_multi_add_handle($multi, /** @scrutinizer ignore-type */ $ch);
             $handles[$url] = $ch;
         }

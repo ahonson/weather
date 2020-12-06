@@ -27,7 +27,7 @@ class IPGeotag
         $ch = curl_init();
         $url = "http://api.ipstack.com/check?access_key=";
         curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_URL, $url . $this->ipkey);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_RETURNTRANSFER, 1);
         $apiresponse = curl_exec(/** @scrutinizer ignore-type */ $ch);
 
         $jsonresp = json_decode($apiresponse, /** @scrutinizer ignore-type */ JSON_UNESCAPED_UNICODE);
@@ -39,7 +39,7 @@ class IPGeotag
         $ch = curl_init();
         $url = "http://api.ipstack.com/$input?access_key=";
         curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_URL, $url . $this->ipkey);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_RETURNTRANSFER, 1);
         $apiresponse = curl_exec(/** @scrutinizer ignore-type */ $ch);
 
         $jsonresp = json_decode($apiresponse, /** @scrutinizer ignore-type */ JSON_UNESCAPED_UNICODE);
@@ -79,7 +79,7 @@ class IPGeotag
             $ch = curl_init();
             $url = "http://api.ipstack.com/$input?access_key=";
             curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_URL, $url . $this->ipkey);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_RETURNTRANSFER, 1);
             $apiresponse = curl_exec(/** @scrutinizer ignore-type */ $ch);
 
             $jsonresp = json_decode($apiresponse, /** @scrutinizer ignore-type */ JSON_UNESCAPED_UNICODE);
