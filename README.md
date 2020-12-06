@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/ahonson/weather.svg?branch=main)](https://travis-ci.com/ahonson/weather)
+
 Anax module for weather services and IP validation
 ==================================================
 
