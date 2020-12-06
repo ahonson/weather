@@ -1,11 +1,13 @@
 [![Latest Stable Version](https://poser.pugx.org/artes/weather/v/stable)](https://packagist.org/packages/artes/weather)
 [![Build Status](https://travis-ci.com/ahonson/weather.svg?branch=main)](https://travis-ci.com/ahonson/weather)
 [![Gitter](https://badges.gitter.im/ahonson/weather.svg)](https://gitter.im/ahonson/weather?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Maintainability](https://api.codeclimate.com/v1/badges/37e71c6e5603861da840/maintainability)](https://codeclimate.com/github/ahonson/weather/maintainability)
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ahonson/weather/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/ahonson/weather/?branch=main)
 [![Code Coverage](https://scrutinizer-ci.com/g/ahonson/weather/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/ahonson/weather/?branch=main)
 [![Build Status](https://scrutinizer-ci.com/g/ahonson/weather/badges/build.png?b=main)](https://scrutinizer-ci.com/g/ahonson/weather/build-status/main)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/ahonson/weather/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
+
 
 Anax module for weather services and IP validation
 ==================================================
