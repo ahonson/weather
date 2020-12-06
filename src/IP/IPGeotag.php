@@ -26,11 +26,11 @@ class IPGeotag
     {
         $ch = curl_init();
         $url = "http://api.ipstack.com/check?access_key=";
-        curl_setopt($ch, CURLOPT_URL, $url . $this->ipkey);
+        curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_URL, $url . $this->ipkey);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $apiresponse = curl_exec($ch);
+        $apiresponse = curl_exec(/** @scrutinizer ignore-type */ $ch);
 
-        $jsonresp = json_decode($apiresponse, JSON_UNESCAPED_UNICODE);
+        $jsonresp = json_decode($apiresponse, /** @scrutinizer ignore-type */ JSON_UNESCAPED_UNICODE);
         return $jsonresp;
     }
 
@@ -38,11 +38,11 @@ class IPGeotag
     {
         $ch = curl_init();
         $url = "http://api.ipstack.com/$input?access_key=";
-        curl_setopt($ch, CURLOPT_URL, $url . $this->ipkey);
+        curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_URL, $url . $this->ipkey);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $apiresponse = curl_exec($ch);
+        $apiresponse = curl_exec(/** @scrutinizer ignore-type */ $ch);
 
-        $jsonresp = json_decode($apiresponse, JSON_UNESCAPED_UNICODE);
+        $jsonresp = json_decode($apiresponse, /** @scrutinizer ignore-type */ JSON_UNESCAPED_UNICODE);
         if (!$jsonresp) {
             $jsonresp = ["ip" => ""];
         }
@@ -78,11 +78,11 @@ class IPGeotag
         if ($input) {
             $ch = curl_init();
             $url = "http://api.ipstack.com/$input?access_key=";
-            curl_setopt($ch, CURLOPT_URL, $url . $this->ipkey);
+            curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_URL, $url . $this->ipkey);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            $apiresponse = curl_exec($ch);
+            $apiresponse = curl_exec(/** @scrutinizer ignore-type */ $ch);
 
-            $jsonresp = json_decode($apiresponse, JSON_UNESCAPED_UNICODE);
+            $jsonresp = json_decode($apiresponse, /** @scrutinizer ignore-type */ JSON_UNESCAPED_UNICODE);
             if (isset($jsonresp["type"])) {
                 if ($jsonresp["type"] === "ipv4" || $jsonresp["type"] === "ipv6") {
                     return $this->printGeoDetails($jsonresp);
