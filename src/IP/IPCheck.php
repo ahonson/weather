@@ -9,13 +9,16 @@ namespace artes\IP;
   */
 class IPCheck
 {
+    private $userinput;
+    private $correctedinput;
+    private $domain;
+
     /**
      * Constructor to initiate an IP object,
      *
      * @param string $userinput
      *
      */
-
     public function __construct(string $userinput)
     {
         $this->userinput = $userinput;
@@ -65,8 +68,9 @@ class IPCheck
             } elseif ($mymy[count($mymy) -1] === "") {
                 array_pop($mymy);
             }
-            $missing = 8 - count($mymy); // IPv6 has eight 16bit blocks
-            for ($i=0; $i < count($mymy); $i++) {
+            $mycount = count($mymy);
+            $missing = 8 - $mycount; // IPv6 has eight 16bit blocks
+            for ($i=0; $i < $mycount; $i++) {
                 array_push($newip6, str_pad($mymy[$i], 4, "0", STR_PAD_LEFT));
                 if ($mymy[$i] === "") {
                     for ($j=0; $j < $missing; $j++) {

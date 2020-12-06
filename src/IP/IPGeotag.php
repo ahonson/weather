@@ -9,13 +9,14 @@ namespace artes\IP;
   */
 class IPGeotag
 {
+    private $ipkey;
+
     /**
      * Constructor to initiate an IP object,
      *
      * @param string $userinput
      *
      */
-
     public function __construct(string $ipkey)
     {
         $this->ipkey = $ipkey;
