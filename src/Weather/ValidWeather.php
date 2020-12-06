@@ -70,19 +70,34 @@ class ValidWeather
     public function errormsg() : string
     {
         if ($this->missingip() || $this->missingcoord()) {
-            $msg = "Missing input. Try again";
-        } elseif (!$this->validip() && $this->ipadress) {
-            $msg = "Invalid IP-address. Try again";
-        } elseif (!$this->validcoord() && $this->koordinater) {
-            $msg = "Invalid coordinates. Try again";
-        } else {
-            $msg = "";
+            return $this->wrapmsg("Missing input. Try again");
         }
-        if ($msg) {
-            $msg = $this->wrapmsg($msg);
+        if (!$this->validip() && $this->ipadress) {
+            return $this->wrapmsg("Invalid IP-address. Try again");
         }
-        return $msg;
+        if (!$this->validcoord() && $this->koordinater) {
+            return $this->wrapmsg("Invalid coordinates. Try again");
+        }
+        return "";
     }
+
+
+    // public function errormsg() : string
+    // {
+    //     if ($this->missingip() || $this->missingcoord()) {
+    //         $msg = "Missing input. Try again";
+    //     } elseif (!$this->validip() && $this->ipadress) {
+    //         $msg = "Invalid IP-address. Try again";
+    //     } elseif (!$this->validcoord() && $this->koordinater) {
+    //         $msg = "Invalid coordinates. Try again";
+    //     } else {
+    //         $msg = "";
+    //     }
+    //     if ($msg) {
+    //         $msg = $this->wrapmsg($msg);
+    //     }
+    //     return $msg;
+    // }
 
     private function wrapmsg($msg) : string
     {
