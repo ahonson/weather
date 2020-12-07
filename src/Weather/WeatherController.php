@@ -79,9 +79,10 @@ class WeatherController implements ContainerInjectableInterface
         $long = $request->getPost("longitud");
         $type = $request->getPost("infotyp");
         $userip = $request->getPost("userip");
-        $data = $this->generateData($userip, $lat, $long, $type);
+        $alldata = $this->generateData($userip, $lat, $long, $type);
+        $data = $alldata[0];
         $page->add("weather/info", $data);
-        if (!($lat && $long)) {
+        if (!(($lat|| $alldata[1]) && ($long || $alldata[2]))) {
             $msg = "<p class='warning'>No geodata could be detected.</p>";
             $session->set("warning", $msg);
             return $response->redirect("weather");
@@ -107,7 +108,7 @@ class WeatherController implements ContainerInjectableInterface
         $data = $this->getWeather($weatherkey, $lat, $long, $type);
         $data["map"] = $map;
         $data["geoinfo"] = $geoinfo;
-        return $data;
+        return [$data, $lat, $long];
     }
 
     /**

@@ -92,8 +92,9 @@ class WeatherAPIController implements ContainerInjectableInterface
             ];
             return [json_encode($myjson, JSON_UNESCAPED_UNICODE)];
         }
-        $data = $this->generateData($userip, $lat, $lon, $type);
-        if (!($lat && $lon)) {
+        $alldata = $this->generateData($userip, $lat, $lon, $type);
+        $data = $alldata[0];
+        if (!(($lat|| $alldata[1]) && ($lon || $alldata[2]))) {
             $msg = [
                 "msg" => "No geodata could be detected."
             ];
@@ -115,7 +116,7 @@ class WeatherAPIController implements ContainerInjectableInterface
             $lon = $geoinfo["longitude"] ?? "";
         }
         $data = $this->getWeather($weatherkey, $lat, $lon, $type);
-        return $data;
+        return [$data, $lat, $lon];
     }
 
     /**
