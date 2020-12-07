@@ -52,16 +52,6 @@ class ValidWeather
         return false;
     }
 
-    // public function validcoord() : bool
-    // {
-    //     if (is_numeric($this->longitud) && is_numeric($this->latitud)) {
-    //         if (abs($this->latitud) <= 90 && abs($this->longitud) <= 180) {
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }
-
     public function validcoord($lon, $lat) : bool
     {
         if (is_numeric($lon) && is_numeric($lat)) {

@@ -81,10 +81,10 @@ class WeatherAPIController implements ContainerInjectableInterface
     {
         $ip = $this->di->get("ip");
         $request = $this->di->get("request");
-        $userip  = $request->getGet("ip", "") ?? $request->getPost("userip", "");
-        $lon  = $request->getGet("lon", "") ?? $request->getPost("longitud", "");
-        $lat  = $request->getGet("lat", "") ?? $request->getPost("latitud", "");
-        $type  = $request->getGet("type", "") ?? $request->getPost("type", "");
+        $userip  = $request->getGet("ip", "") ?: $request->getPost("userip", "");
+        $lon  = $request->getGet("lon", "") ?: $request->getPost("longitud", "");
+        $lat  = $request->getGet("lat", "") ?: $request->getPost("latitud", "");
+        $type  = $request->getGet("type", "") ?: $request->getPost("type", "");
         $validator = new ValidAPIWeather($request, $ip);
         if ($validator->errormsg()) {
             $myjson = [
