@@ -76,7 +76,7 @@ class IPGeotag
             $url = "http://api.ipstack.com/$input?access_key=" . $this->ipkey;
             $jsonresp = $mycurl->curl($url);
             if (isset($jsonresp["type"])) {
-                if ($jsonresp["type"] === "ipv4" || $jsonresp["type"] === "ipv6") {
+                if (($jsonresp["type"] === "ipv4" || $jsonresp["type"] === "ipv6") && $jsonresp["latitude"]) {
                     return $this->printGeoDetails($jsonresp);
                 }
             }

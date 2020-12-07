@@ -52,10 +52,20 @@ class ValidWeather
         return false;
     }
 
-    public function validcoord() : bool
+    // public function validcoord() : bool
+    // {
+    //     if (is_numeric($this->longitud) && is_numeric($this->latitud)) {
+    //         if (abs($this->latitud) <= 90 && abs($this->longitud) <= 180) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+
+    public function validcoord($lon, $lat) : bool
     {
-        if (is_numeric($this->longitud) && is_numeric($this->latitud)) {
-            if (abs($this->latitud) <= 90 && abs($this->longitud) <= 180) {
+        if (is_numeric($lon) && is_numeric($lat)) {
+            if (abs($lat) <= 90 && abs($lon) <= 180) {
                 return true;
             }
         }
@@ -70,7 +80,7 @@ class ValidWeather
         if (!$this->ip->validip($this->userip) && $this->ipadress) {
             return $this->wrapmsg("Invalid IP-address. Try again");
         }
-        if (!$this->validcoord() && $this->koordinater) {
+        if (!$this->validcoord($this->longitud, $this->latitud) && $this->koordinater) {
             return $this->wrapmsg("Invalid coordinates. Try again");
         }
         return "";

@@ -50,7 +50,7 @@ class ValidAPIWeather extends ValidWeather
     {
         if ($this->missinginput()) {
             $msg = "Missing input. Try again";
-        } elseif (!$this->ip->validip($this->userip) && !$this->validcoord()) {
+        } elseif (!$this->ip->validip($this->userip) && !$this->validcoord($this->longitud, $this->latitud)) {
             $msg = "Invalid query parameters. Try again";
         } else {
             $msg = "";
