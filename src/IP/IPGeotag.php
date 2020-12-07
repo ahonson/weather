@@ -26,7 +26,7 @@ class IPGeotag
 
     public function checkuserip() : array
     {
-        $mycurl = new Curl;
+        $mycurl = new Curl();
         $url = "http://api.ipstack.com/check?access_key=" . $this->ipkey;
         $jsonresp = $mycurl->curl($url);
 
@@ -42,7 +42,7 @@ class IPGeotag
 
     public function checkdefaultip($input) : array
     {
-        $mycurl = new Curl;
+        $mycurl = new Curl();
         $url = "http://api.ipstack.com/$input?access_key=" . $this->ipkey;
         $jsonresp = $mycurl->curl($url);
 
@@ -86,17 +86,9 @@ class IPGeotag
     public function checkinputip($input) : string
     {
         if ($input) {
-            $mycurl = new Curl;
+            $mycurl = new Curl();
             $url = "http://api.ipstack.com/$input?access_key=" . $this->ipkey;
             $jsonresp = $mycurl->curl($url);
-
-            // $ch = curl_init();
-            // $url = "http://api.ipstack.com/$input?access_key=";
-            // curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_URL, $url . $this->ipkey);
-            // curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_RETURNTRANSFER, 1);
-            // $apiresponse = curl_exec(/** @scrutinizer ignore-type */ $ch);
-            //
-            // $jsonresp = json_decode($apiresponse, /** @scrutinizer ignore-type */ JSON_UNESCAPED_UNICODE);
             if (isset($jsonresp["type"])) {
                 if ($jsonresp["type"] === "ipv4" || $jsonresp["type"] === "ipv6") {
                     return $this->printGeoDetails($jsonresp);

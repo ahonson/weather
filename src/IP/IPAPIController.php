@@ -61,6 +61,13 @@ class IPAPIController implements ContainerInjectableInterface
     {
         $request = $this->di->get("request");
         $ip  = $request->getGet("ip", "");
+        $firstJSON = $this->generateJSON1($ip);
+        $myjson = $this->generateJSON2($firstJSON, $ip);
+        return [json_encode($myjson, JSON_UNESCAPED_UNICODE)];
+    }
+
+    public function generateJSON1($ip)
+    {
         $userip = new IPCheck($ip);
         $ip4 = $userip->ipv4();
         $ip6 = $userip->ipv6();
@@ -69,7 +76,7 @@ class IPAPIController implements ContainerInjectableInterface
         $domain = $userip->getDomainName();
         $ipmsg = $userip->printIPMessage();
         $domainmsg = $userip->printDomainMessage();
-        $myjson = [
+        $firstJSON = [
             "ip4" => $ip4,
             "ip6" => $ip6,
             "userinput" => $userinput,
@@ -78,12 +85,10 @@ class IPAPIController implements ContainerInjectableInterface
             "ipmsg" => $ipmsg,
             "domainmsg" => $domainmsg,
         ];
-
-        $myjson = $this->generateJSON($myjson, $ip);
-        return [json_encode($myjson, JSON_UNESCAPED_UNICODE)];
+        return $firstJSON;
     }
 
-    public function generateJSON($myjson, $ip)
+    public function generateJSON2($myjson, $ip)
     {
         $ipkey = "";
         // this loads $ipkey and $weatherkey
@@ -113,25 +118,8 @@ class IPAPIController implements ContainerInjectableInterface
     {
         $request = $this->di->get("request");
         $ip  = $request->getPost("ip", "");
-        $userip = new IPCheck($ip);
-        $ip4 = $userip->ipv4();
-        $ip6 = $userip->ipv6();
-        $userinput = $userip->getUserInput();
-        $corrected = $userip->getCorrectedInput();
-        $domain = $userip->getDomainName();
-        $ipmsg = $userip->printIPMessage();
-        $domainmsg = $userip->printDomainMessage();
-        $myjson = [
-            "ip4" => $ip4,
-            "ip6" => $ip6,
-            "userinput" => $userinput,
-            "corrected" => $corrected,
-            "domain" => $domain,
-            "ipmsg" => $ipmsg,
-            "domainmsg" => $domainmsg,
-        ];
-
-        $myjson = $this->generateJSON($myjson, $ip);
+        $firstJSON = $this->generateJSON1($ip);
+        $myjson = $this->generateJSON2($firstJSON, $ip);
         return [json_encode($myjson, JSON_UNESCAPED_UNICODE)];
     }
 }
