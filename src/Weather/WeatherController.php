@@ -74,28 +74,13 @@ class WeatherController implements ContainerInjectableInterface
             $session->set("warning", $validator->errormsg());
             return $response->redirect("weather");
         }
-
-        $ipkey = "";
-        $weatherkey = "";
-        // this loads $ipkey and $weatherkey
-        include(ANAX_INSTALL_PATH . '/config/api/apikeys.php');
         $page = $this->di->get("page");
         $lat = $request->getPost("latitud");
         $long = $request->getPost("longitud");
         $type = $request->getPost("infotyp");
-        $geotag = new IPGeotag($ipkey);
-        $geoinfo = "";
-        if ($request->getPost("userip")) {
-            $input = $request->getPost("userip");
-            $geoinfo = $geotag->checkdefaultip($input);
-            $lat = $geoinfo["latitude"] ?? "";
-            $long = $geoinfo["longitude"] ?? "";
-            $geoinfo = $geotag->checkinputip($input);
-        }
-        $map = $geotag->printmap($lat, $long);
-        $data = $this->getWeather($weatherkey, $lat, $long, $type);
-        $data["map"] = $map;
-        $data["geoinfo"] = $geoinfo;
+        $userip = $request->getPost("userip");
+
+        $data = $this->generateData($userip, $lat, $long, $type);
         $page->add(
             "weather/info",
             $data
@@ -109,6 +94,27 @@ class WeatherController implements ContainerInjectableInterface
         return $page->render([
             "title" => "Weather",
         ]);
+    }
+
+    public function generateData($userip, $lat, $long, $type)
+    {
+        $ipkey = "";
+        $weatherkey = "";
+        // this loads $ipkey and $weatherkey
+        include(ANAX_INSTALL_PATH . '/config/api/apikeys.php');
+        $geotag = new IPGeotag($ipkey);
+        $geoinfo = "";
+        if ($userip) {
+            $geoinfo = $geotag->checkdefaultip($userip);
+            $lat = $geoinfo["latitude"] ?? "";
+            $long = $geoinfo["longitude"] ?? "";
+            $geoinfo = $geotag->checkinputip($userip);
+        }
+        $map = $geotag->printmap($lat, $long);
+        $data = $this->getWeather($weatherkey, $lat, $long, $type);
+        $data["map"] = $map;
+        $data["geoinfo"] = $geoinfo;
+        return $data;
     }
 
     /**
