@@ -70,6 +70,7 @@ class IPAPIController implements ContainerInjectableInterface
         $ipmsg = $userip->printIPMessage();
         $domainmsg = $userip->printDomainMessage();
 
+        $ipkey = "";
         // this loads $ipkey and $weatherkey
         include(ANAX_INSTALL_PATH . '/config/api/apikeys.php');
         $geoip = new IPGeotag($ipkey);
@@ -125,6 +126,7 @@ class IPAPIController implements ContainerInjectableInterface
         $ipmsg = $userip->printIPMessage();
         $domainmsg = $userip->printDomainMessage();
 
+        $ipkey = "";
         // this loads $ipkey and $weatherkey
         include(ANAX_INSTALL_PATH . '/config/api/apikeys.php');
         $geoip = new IPGeotag($ipkey);

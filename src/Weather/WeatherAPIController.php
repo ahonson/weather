@@ -74,6 +74,8 @@ class WeatherAPIController implements ContainerInjectableInterface
             ];
             return [json_encode($myjson, JSON_UNESCAPED_UNICODE)];
         }
+        $ipkey = "";
+        $weatherkey = "";
         // this loads $ipkey and $weatherkey
         include(ANAX_INSTALL_PATH . '/config/api/apikeys.php');
         $geotag = new IPGeotag($ipkey);
@@ -117,6 +119,8 @@ class WeatherAPIController implements ContainerInjectableInterface
             return [json_encode($myjson, JSON_UNESCAPED_UNICODE)];
         }
 
+        $ipkey = "";
+        $weatherkey = "";
         // this loads $ipkey and $weatherkey
         include(ANAX_INSTALL_PATH . '/config/api/apikeys.php');
         $geotag = new IPGeotag($ipkey);

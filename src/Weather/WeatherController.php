@@ -75,6 +75,8 @@ class WeatherController implements ContainerInjectableInterface
             return $response->redirect("weather");
         }
 
+        $ipkey = "";
+        $weatherkey = "";
         // this loads $ipkey and $weatherkey
         include(ANAX_INSTALL_PATH . '/config/api/apikeys.php');
         $page = $this->di->get("page");
