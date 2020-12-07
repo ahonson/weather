@@ -75,25 +75,6 @@ class IP
     private function input2ip6($ip) : string
     {
         $newip6 = $this->corrected($ip);
-        // $newip6 = [];
-        // if ($ip) {
-        //     $mymy = explode(":", $ip);
-        //     if ($mymy[0] === "") {
-        //         array_shift($mymy);
-        //     } elseif ($mymy[count($mymy) -1] === "") {
-        //         array_pop($mymy);
-        //     }
-        //     $mycount = count($mymy);
-        //     $missing = 8 - $mycount; // IPv6 has eight 16bit blocks
-        //     for ($i=0; $i < $mycount; $i++) {
-        //         array_push($newip6, str_pad($mymy[$i], 4, "0", STR_PAD_LEFT));
-        //         if ($mymy[$i] === "") {
-        //             for ($j=0; $j < $missing; $j++) {
-        //                 array_push($newip6, str_pad($mymy[$i], 4, "0", STR_PAD_LEFT));
-        //             }
-        //         }
-        //     }
-        // }
         $newip6str = implode(":", $newip6);
         return $newip6str;
     }
