@@ -41,7 +41,23 @@ class IP
         return false;
     }
 
-    public function corrected($ipinput): array
+    public function padIP($mymy) : array
+    {
+        $newip6 = [];
+        $mycount = count($mymy);
+        $missing = 8 - $mycount; // IPv6 has eight 16bit blocks
+        for ($i=0; $i < $mycount; $i++) {
+            array_push($newip6, str_pad($mymy[$i], 4, "0", STR_PAD_LEFT));
+            if ($mymy[$i] === "") {
+                for ($j=0; $j < $missing; $j++) {
+                    array_push($newip6, str_pad($mymy[$i], 4, "0", STR_PAD_LEFT));
+                }
+            }
+        }
+        return $newip6;
+    }
+
+    public function corrected($ipinput) : array
     {
         $newip6 = [];
         if ($ipinput) {
@@ -51,16 +67,7 @@ class IP
             } elseif ($mymy[count($mymy) -1] === "") {
                 array_pop($mymy);
             }
-            $mycount = count($mymy);
-            $missing = 8 - $mycount; // IPv6 has eight 16bit blocks
-            for ($i=0; $i < $mycount; $i++) {
-                array_push($newip6, str_pad($mymy[$i], 4, "0", STR_PAD_LEFT));
-                if ($mymy[$i] === "") {
-                    for ($j=0; $j < $missing; $j++) {
-                        array_push($newip6, str_pad($mymy[$i], 4, "0", STR_PAD_LEFT));
-                    }
-                }
-            }
+            $newip6 = $this->padIP($mymy);
         }
         return $newip6;
     }

@@ -82,10 +82,8 @@ class OpenWeather
         return $result;
     }
 
-    private function mymulticurl($urls)
+    private function getHandles($urls, $multi)
     {
-        $result = [];
-        $multi = curl_multi_init();
         $handles = [];
         foreach ($urls as $url) {
             $ch = curl_init($url);
@@ -94,6 +92,16 @@ class OpenWeather
             curl_multi_add_handle($multi, /** @scrutinizer ignore-type */ $ch);
             $handles[$url] = $ch;
         }
+        return [$handles, $multi];
+    }
+
+    private function mymulticurl($urls)
+    {
+        $result = [];
+        $multi = curl_multi_init();
+        $output = $this->getHandles($urls, $multi);
+        $handles =  $output[0];
+        $multi = $output[1];
         do {
             $mrc = curl_multi_exec($multi, $active);
         } while ($mrc == CURLM_CALL_MULTI_PERFORM);
