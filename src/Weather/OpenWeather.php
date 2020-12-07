@@ -26,10 +26,9 @@ class OpenWeather
         $this->long = $long;
     }
 
-    public function currentweather() : array
+    public function curlcall($url)
     {
         $ch = curl_init();
-        $url = "https://api.openweathermap.org/data/2.5/weather?lat=" . $this->lat . "&lon=" . $this->long . "&appid=" . $this->weatherkey . "&units=metric&lang=se";
         curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_URL, $url);
         curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_RETURNTRANSFER, 1);
         $apiresponse = curl_exec(/** @scrutinizer ignore-type */ $ch);
@@ -38,15 +37,17 @@ class OpenWeather
         return $jsonresp;
     }
 
+    public function currentweather() : array
+    {
+        $url = "https://api.openweathermap.org/data/2.5/weather?lat=" . $this->lat . "&lon=" . $this->long . "&appid=" . $this->weatherkey . "&units=metric&lang=se";
+        $jsonresp = $this->curlcall($url);
+        return $jsonresp;
+    }
+
     public function forecast() : array
     {
-        $ch = curl_init();
         $url = "https://api.openweathermap.org/data/2.5/onecall?lat=" . $this->lat . "&lon=" . $this->long . "&exclude=minutely,hourly&appid=" . $this->weatherkey . "&units=metric&lang=se";
-        curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_URL, $url);
-        curl_setopt(/** @scrutinizer ignore-type */ $ch, CURLOPT_RETURNTRANSFER, 1);
-        $apiresponse = curl_exec(/** @scrutinizer ignore-type */ $ch);
-
-        $jsonresp = json_decode($apiresponse, /** @scrutinizer ignore-type */ JSON_UNESCAPED_UNICODE);
+        $jsonresp = $this->curlcall($url);
         return $jsonresp;
     }
 
