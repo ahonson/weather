@@ -1,3 +1,4 @@
+[![Latest Stable Version](https://poser.pugx.org/artes/weather/v)](//packagist.org/packages/artes/weather)
 [![Latest Stable Version](https://poser.pugx.org/artes/weather/v/stable)](https://packagist.org/packages/artes/weather)
 [![Build Status](https://travis-ci.com/ahonson/weather.svg?branch=main)](https://travis-ci.com/ahonson/weather)
 [![Gitter](https://badges.gitter.im/ahonson/weather.svg)](https://gitter.im/ahonson/weather?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
