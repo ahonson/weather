@@ -61,12 +61,30 @@ class WeatherAPIController implements ContainerInjectableInterface
      */
     public function infoActionGet() : array
     {
+        return $this->makeJSON();
+    }
+
+    /**
+     * This is the index method action, it handles:
+     * ANY METHOD mountpoint
+     * ANY METHOD mountpoint/
+     * ANY METHOD mountpoint/index
+     *
+     * @return array
+     */
+    public function infoActionPost() : array
+    {
+        return $this->makeJSON();
+    }
+
+    public function makeJSON()
+    {
         $ip = $this->di->get("ip");
         $request = $this->di->get("request");
-        $userip  = $request->getGet("ip", "");
-        $lon  = $request->getGet("lon", "");
-        $lat  = $request->getGet("lat", "");
-        $type  = $request->getGet("type", "");
+        $userip  = $request->getGet("ip", "") ?? $request->getPost("userip", "");
+        $lon  = $request->getGet("lon", "") ?? $request->getPost("longitud", "");
+        $lat  = $request->getGet("lat", "") ?? $request->getPost("latitud", "");
+        $type  = $request->getGet("type", "") ?? $request->getPost("type", "");
         $validator = new ValidAPIWeather($request, $ip);
         if ($validator->errormsg()) {
             $myjson = [
@@ -98,40 +116,6 @@ class WeatherAPIController implements ContainerInjectableInterface
         }
         $data = $this->getWeather($weatherkey, $lat, $lon, $type);
         return $data;
-    }
-
-    /**
-     * This is the index method action, it handles:
-     * ANY METHOD mountpoint
-     * ANY METHOD mountpoint/
-     * ANY METHOD mountpoint/index
-     *
-     * @return array
-     */
-    public function infoActionPost() : array
-    {
-        $ip = $this->di->get("ip");
-        $request = $this->di->get("request");
-        $userip  = $request->getPost("userip", "");
-        $lon  = $request->getPost("longitud", "");
-        $lat  = $request->getPost("latitud", "");
-        $type  = $request->getPost("type", "");
-
-        $validator = new ValidAPIWeather($request, $ip);
-        if ($validator->errormsg()) {
-            $myjson = [
-                "msg" => $validator->errormsg()
-            ];
-            return [json_encode($myjson, JSON_UNESCAPED_UNICODE)];
-        }
-        $data = $this->generateData($userip, $lat, $lon, $type);
-        if (!($lat && $lon)) {
-            $msg = [
-                "msg" => "No geodata could be detected."
-            ];
-            return [json_encode($msg, JSON_UNESCAPED_UNICODE)];
-        }
-        return [json_encode($data, JSON_UNESCAPED_UNICODE)];
     }
 
     /**

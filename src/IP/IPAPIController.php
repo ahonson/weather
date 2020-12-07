@@ -59,8 +59,29 @@ class IPAPIController implements ContainerInjectableInterface
      */
     public function checkActionGet() : array
     {
+        return $this->makeJSON();
+    }
+
+    /**
+     * This is the index method action, it handles:
+     * ANY METHOD mountpoint
+     * ANY METHOD mountpoint/
+     * ANY METHOD mountpoint/index
+     *
+     * @return array
+     */
+    public function checkActionPost() : array
+    {
+        return $this->makeJSON();
+    }
+
+    public function makeJSON()
+    {
         $request = $this->di->get("request");
         $ip  = $request->getGet("ip", "");
+        if (!$ip) {
+            $ip  = $request->getPost("ip", "");
+        }
         $firstJSON = $this->generateJSON1($ip);
         $myjson = $this->generateJSON2($firstJSON, $ip);
         return [json_encode($myjson, JSON_UNESCAPED_UNICODE)];
@@ -104,22 +125,5 @@ class IPAPIController implements ContainerInjectableInterface
         $myjson["map"] = $geoip->getmap($ip);
 
         return $myjson;
-    }
-
-    /**
-     * This is the index method action, it handles:
-     * ANY METHOD mountpoint
-     * ANY METHOD mountpoint/
-     * ANY METHOD mountpoint/index
-     *
-     * @return array
-     */
-    public function checkActionPost() : array
-    {
-        $request = $this->di->get("request");
-        $ip  = $request->getPost("ip", "");
-        $firstJSON = $this->generateJSON1($ip);
-        $myjson = $this->generateJSON2($firstJSON, $ip);
-        return [json_encode($myjson, JSON_UNESCAPED_UNICODE)];
     }
 }
